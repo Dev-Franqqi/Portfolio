@@ -1,113 +1,260 @@
-import Image from 'next/image'
+"use client";
+import { useState } from "react";
+import { FaMoon } from "react-icons/fa6";
+import Image from "next/image";
+import Folio_pic from "./images/folio_pic.svg";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+import HTML from "./images/html.svg"
+import CSS from "./images/css.svg"
+import Javascript from "./images/Javascript.svg"
+import Tailwind from "./images/tailwind.svg"
+import Nodejs from "./images/Nodejs.svg"
+import Mongodb from "./images/mongodb.svg"
+import Next from "./images/nextjs.svg"
+import Firebase from "./images/firebase.svg"
+import Supabase from "./images/supabase.svg"
+import Google from "./images/google.svg"
+import React from "./images/React.svg"
+import Github from "./images/Github.svg"
+import Typescript from "./images/typescript.svg"
+import Vscode from "./images/vscode.svg"
+import Netflix from "./images/netflix.svg"
+import Shipment from "./images/shipment.svg"
+import Rocket from "./images/esendurocket.svg"
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  Link,
+  Button,
+  NavbarMenu,
+  NavbarMenuItem,
+} from "@nextui-org/react";
+// import { AcmeLogo } from "./AcmeLogo.jsx";
 
-export default function Home() {
+export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const menuItems = ["Home", "Projects", "Resume", "Contact Me"];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className={darkMode ? "dark h-screen pb-8 bg-black text-white" : ""}>
+      <Navbar onMenuOpenChange={setIsMenuOpen}>
+        <NavbarContent>
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="sm:hidden"
+          />
+          <NavbarBrand>
+            {/* <AcmeLogo /> */}
+            <p className="font-bold">Dev-Franqqi</p>
+          </NavbarBrand>
+        </NavbarContent>
+
+        <NavbarContent className="hidden sm:flex gap-4" justify="center">
+          <NavbarItem isActive>
+            <Link color="foreground" aria-current="page" href="#">
+              Home
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="#">Projects</Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link color="foreground" href="#">
+              Resume
+            </Link>
+          </NavbarItem>
+        </NavbarContent>
+        <NavbarContent justify="end">
+          <NavbarItem
+            onClick={() => {
+              setDarkMode(!darkMode);
+              console.log(darkMode);
+            }}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <FaMoon />
+          </NavbarItem>
+        </NavbarContent>
+        <NavbarMenu>
+          {menuItems.map((item, index) => (
+            <NavbarMenuItem key={`${item}-${index}`}>
+              <Link
+                color={index === 0 ? "primary" : "foreground"}
+                className="w-full"
+                href="#"
+                size="lg"
+              >
+                {item}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </NavbarMenu>
+      </Navbar>
+
+      <main
+        className={darkMode ? " bg-black pt-16 px-5" : " bg-white pt-16 px-5"}
+      >
+
+
+        
+        <Image loading="lazy" className="mx-auto" src={Folio_pic} alt="" />
+        <h1 className="text-3xl mt-2 font-bold mx-auto w-2/5 text-center">
+          Franklin Ebi
+        </h1>
+        <p className="text-center text-lg mt-2">Full Stack Developer</p>
+        <p className="text-center text-sm mt-1">
+          Freelancer providing services for programming and design content
+          needs. Join me down below and lets get cracking!
+        </p>
+        <div className="flex justify-between w-3/5 md:w-1/5 mx-auto mt-3 text-3xl">
+          <FaLinkedin />
+          <FaGithub />
+          <FaInstagram />
+          <BsTwitterX />
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <section className="mt-16 font-medium md:px-20 pb-7">
+          <h2 className="text-center font-bold">My TOOLS</h2>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <div className=" dark:bg-opacity-50 dark:brightness-110 text-black rounded-md bg-white shadow-small mt-7 p-7 justify-between flex flex-wrap  text-xs text-center">
+            <div className="w-fit mb-4">
+              <Image loading="lazy" className=" scale-50" src={HTML} alt="" />
+              <p className="text-black">HTML</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={CSS} alt="" />
+              <p className="text-black ">CSS</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Javascript} alt="" />
+              <p className="text-black ">Javascript</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Tailwind} alt="" />
+              <p className="text-black ">Tailwind</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Typescript} alt="" />
+              <p className="text-black ">Typescript</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={React} alt="" />
+              <p className="text-black ">React</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Next} alt="" />
+              <p className="text-black ">Next</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Nodejs} alt="" />
+              <p className="text-black ">Nodejs</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Github} alt="" />
+              <p className="text-black ">Github</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Mongodb} alt="" />
+              <p className="text-black ">Mongodb</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Firebase} alt="" />
+              <p className="text-black ">Firebase</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Supabase} alt="" />
+              <p className="text-black ">Supabase</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Vscode} alt="" />
+              <p className="text-black ">Vscode</p>
+            </div>
+            <div className=" w-fit">
+              <Image loading="lazy" className=" scale-50" src={Google} alt="" />
+              <p className="text-black ">Google</p>
+            </div>
+          </div>
+        </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <section className="py-10 px-3">
+          <h3 className="text-center font-bold ">MY PROJECTS</h3>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+          <ol className="">
+            <li className="shadow dark:shadow-gray-200  w-full border mt-5 p-5 rounded-md">
+              <span className="font-semibold">Netflix Clone</span>
+              <Image loading="lazy" src={Netflix} alt="" className="mb-3" />
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+              <div>
+                <div className="flex justify-between text-xs font-semibold">
+                  <button className="text-blue-500 border-2 p-2 rounded-md bg-white">
+                    View website
+                  </button>
+                  <button className="text-white border-2 p-2 rounded-md bg-black">
+                    View Repo
+                  </button>
+                </div>
+                <p className="text-sm">
+                  Description: A UI clone of the Netflix website
+                </p>
+
+                <p className="text-xs mt-3">
+                  Tools Used: Nextjs, Tailwind, Shadcn UI
+                </p>
+              </div>
+            </li>
+            <li className="shadow dark:shadow-gray-200 border mt-5 p-5 rounded-md">
+              <span className="font-semibold">Esendu Rocket</span>
+              <Image loading="lazy" src={Rocket} alt="" className="mb-3" />
+
+              <div>
+                <div className="flex justify-between text-xs font-semibold">
+                  <button className="text-blue-500 border-2 p-2 rounded-md bg-white">
+                    View website
+                  </button>
+                  <button className="text-white border-2 p-2 rounded-md bg-black">
+                    View Repo
+                  </button>
+                </div>
+                <p className="text-sm">
+                  Description: A web app that uses the wikepedia API to return
+                  resilts according to user searches
+                </p>
+
+                <p className="text-xs mt-3">Tools Used: Nextjs, Typescript</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section className="py-10">
+          <h2 className="font-bold text-2xl text-center">CONTACT ME</h2>
+
+          <p className="text-sm text-center mt-4 mb-2">Send me an email</p>
+          <form className="flex flex-col gap-y-3 text-sm w-fit mx-auto ">
+            <input
+              type="email"
+              className="border rounded-md w-[20rem] p-3"
+              placeholder="Email"
+            />
+            <input
+              type="text"
+              className="border rounded-md w-[20rem] p-3"
+              placeholder="Subject"
+            />
+            <input
+              className="border rounded-md w-[20rem] h-[10rem] p-3"
+              type="text"
+              placeholder="Message Body"
+            />
+          </form>
+        </section>
+      </main>
+    </div>
+  );
 }
